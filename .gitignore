@@ -1,0 +1,8 @@
+# Protect AWS keys anywhere in the repo
+*.pem
+*.ppk
+
+# Python environment and cache files
+__pycache__/
+*.pyc
+.env
