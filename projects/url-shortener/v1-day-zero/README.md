@@ -106,3 +106,30 @@ To replicate the deployment on an active cloud server:
   -H "Content-Type: application/json" \
   -d '{"url": "[https://www.google.com](https://www.google.com)"}'
   ```
+
+## Architectural Limitations & Flaws 
+While this deployment successfully proves the application works in an EC2 cloud container environment, Version 1 is fundamentally unsafe for a production environment. It introduces three critical engineering flaws:
+
+### 1. **The Ephemeral Data Problem (Total State Loss)**
+
+- **The Flaw:** Data is stored inside the local memory (RAM) or inside the volatile storage layer of the running container.
+- **The Impact:** Docker containers are designed to be temporary and stateless. If this container crashes, restarts, or is updated with a new code deployment, **every single shortened URL created by users disappears forever.**
+
+### 2. **Single Point of Failure (Zero Availability)**
+
+- **The Flaw:** The entire application lives on a single EC2 instance handling all traffic directly via its public IP address.
+- **The Impact:** If the application crashes due to an unhandled exception, or if AWS experiences a routine physical hardware failure in that specific Availability Zone, the application goes completely dark. There is no fallback mechanism.
+
+### 3. **Vertical Scaling Wall**
+
+- **The Flaw:** Traffic hits the host directly. If users multiply, the single instance must process all networking and routing rules simultaneously.
+- **The Impact:** Sudden traffic spikes will quickly saturate the CPU and memory bounds of the instance, leading to dropped connections, high latency, and an outright service denial.
+
+## The Next Evolution: Moving to Version 2
+
+Hence, this is why we must evolve. To build a resilient, enterprise-grade architecture that protects user data and ensures uninterrupted uptime, we must decouple our structural components.
+
+In Version 2, we will fix these flaws by migrating to a Decoupled Architecture:
+
+- **Persistent Data Tier:** Stripping data storage out of the ephemeral container and moving it to a persistent, fully managed **AWS RDS Database.**
+- **High Availability & Redundancy:** Eradicating the single point of failure by deploying multiple application containers across different Availability Zones (AZs) behind an AWS **Application Load Balancer (ALB).**
