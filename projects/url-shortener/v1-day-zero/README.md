@@ -46,3 +46,63 @@ $$\text{Total Storage per Month} = 10,000,000 \times 500\text{ bytes} \approx 5\
 
 - **5-Year Projection:** Over a span of five years, this amounts to roughly **300 GB**. Knowing this data footprint helps us realize that a standard, budget-friendly database storage tier can easily handle our data for years without needing immediate, massive cluster scaling.
 ---
+
+##  Architecture Overview
+
+- **Backend Framework:** Python / Flask
+- **Containerization Engine:** Docker
+- **Cloud Infrastructure:** AWS EC2 (Ubuntu)
+- **Networking/Security:** AWS Security Groups opening inbound TCP port `5000` to the internet and port `22` for SSH management.
+
+---
+
+##  Step-by-Step Implementation Guide
+
+### 1. Local Development & Containerization
+To test and build this application on your local machine:
+
+- **Clone the repository and navigate here:**
+   ```bash
+   cd projects/url-shortener/v1-day-zero
+  ```
+- **Build the isolated Docker image:**
+    ```bash
+  docker build -t url-shortener .
+  ```
+-  **Run the container locally (mapping port 5000):**
+     ```bash
+    docker run -p 5000:5000 url-shortener
+   ```
+- **Verify it works by sending a local HTTP request:**
+    ```bash
+    curl -X POST http://localhost:5000/shorten \
+  -H "Content-Type: application/json" \
+  -d '{"url": "[https://www.google.com](https://www.google.com)"}'
+  ```
+-   **Push the Docker image to a registry (like Docker Hub) so your cloud server can pull it down:**
+    ```bash    
+    docker login
+    docker tag url-shortener YOUR_DOCKERHUB_USERNAME/url-shortener:latest
+    docker push YOUR_DOCKERHUB_USERNAME/url-shortener:latest
+    ```
+
+
+### 2.  Shipping to the Cloud (AWS EC2)
+To replicate the deployment on an active cloud server:
+
+- **Provision Infrastructure:** Launch an Ubuntu `t2.micro` EC2 instance on AWS. Ensure your inbound security group rules allow traffic on port `5000` (for application traffic) and port `22` (for your SSH access).
+- **Prepare the Host Environment:** SSH into the EC2 instance and install Docker:
+    ```bash
+    sudo apt-get update && sudo apt-get install -y docker.io
+    sudo usermod -aG docker ubuntu && newgrp docker
+   ```
+- **Pull the image from Docker Hub, and run it:**
+    ```bash
+    docker run -d -p 5000:5000 --name web-app YOUR_USERNAME/url-shortener:latest
+   ```
+- **Test the live cloud app:** Open your local terminal tab and run `curl` command against your EC2 Public IP address instead of `localhost`:
+    ```bash
+    curl -X POST http://YOUR_EC2_PUBLIC_IP:5000/shorten \
+  -H "Content-Type: application/json" \
+  -d '{"url": "[https://www.google.com](https://www.google.com)"}'
+  ```
