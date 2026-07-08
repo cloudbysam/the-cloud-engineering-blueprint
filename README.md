@@ -15,3 +15,10 @@ Whether you are transitioning from standard software development or starting fre
 6. Hands-On Capstone Projects
 
 ---
+
+## The Study Roadmap Checklist
+
+### Phase 1: The Core Prerequisites
+Before moving to the cloud, you must master the tools used to build and manage local applications.
+
+- [ ] **Linux & Command Line ([Linux Essentials](./posts/linux-essentials.md)):** Learn how to navigate the terminal, manage file permissions, and write basic shell scripts.
