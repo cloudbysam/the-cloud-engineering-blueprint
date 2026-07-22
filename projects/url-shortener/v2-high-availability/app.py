@@ -28,12 +28,16 @@ class URLMapping(db.Model):
 with app.app_context():
     db.create_all()
 
+@app.route('/health', methods=['GET'])
+def health_check():
+    return {"status": "healthy"}, 200    
+
 @app.route('/shorten', methods=['POST'])
 def shorten():
     data = request.get_json()
 
     if not data or 'url' not in data:
-        return jsonify({"error": "URL is required"}), 404
+        return jsonify({"error": "URL is required"}), 400
     
     long_url = data['url']
 
@@ -48,8 +52,10 @@ def shorten():
         new_mapping = URLMapping(short_code=short_code, long_url=long_url)
         db.session.add(new_mapping)
         db.session.commit()
-
-    return jsonify({"short_url": f"http://localhost:5000/{short_code}"}), 201    
+    
+    # Use the request's Host header so it matches the ALB DNS name or IP dynamically
+    host_header = request.host
+    return jsonify({"short_url": f"http://{host_header}/{short_code}"}), 201    
 
 @app.route('/<short_code>', methods=['GET'])
 def redirect_to_url(short_code):
