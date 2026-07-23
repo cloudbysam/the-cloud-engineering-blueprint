@@ -22,3 +22,4 @@ Whether you are transitioning from standard software development or starting fre
 Before moving to the cloud, you must master the tools used to build and manage local applications.
 
 - [ ] **Linux & Command Line ([Linux Essentials](./posts/linux-essentials.md)):** Learn how to navigate the terminal, manage file permissions, and write basic shell scripts.
+- [ ] **Git & GitHub ([Git Essentials](./posts/git-essentials.md)):** Learn repository management, staging, committing, and how to safely undo mistakes using git reset.
