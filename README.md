@@ -24,3 +24,14 @@ Before moving to the cloud, you must master the tools used to build and manage l
 - [ ] **Linux & Command Line ([Linux Essentials](./posts/linux-essentials.md)):** Learn how to navigate the terminal, manage file permissions, and write basic shell scripts.
 - [ ] **Git & GitHub ([Git Essentials](./posts/git-essentials.md)):** Learn repository management, staging, committing, and how to safely undo mistakes using git reset.
 - [ ] **Python Programming ([Python Essentials](./posts/python-essentials.md)):** Master functions, modular code design, decorators, and basic error handling for automation and cloud scripting.
+
+
+
+
+## Hands-On Capstone Projects
+
+The best way to prove you are a cloud engineer is to build real things. Here are the milestone projects for this university:
+
+### 1. High-Availability & Serverless URL Shortener (Enterprise SaaS)
+* **The Goal:** Build and deploy a production-grade, highly available URL shortening service that scales dynamically, caches frequent redirections in memory, and persists mappings across multi-AZ databases.
+* **Cloud Skills:** Docker containerization, AWS ALB & Auto Scaling Groups, Amazon RDS (PostgreSQL), AWS ECS Fargate serverless orchestration and AWS ElastiCache (Redis).
