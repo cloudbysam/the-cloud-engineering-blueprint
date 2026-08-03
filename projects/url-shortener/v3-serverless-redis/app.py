@@ -2,6 +2,8 @@ import os
 import random
 import string
 import redis
+import time
+from sqlalchemy.exc import OperationalError
 from flask import Flask, request, redirect, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
@@ -36,8 +38,18 @@ class URLMapping(db.Model):
     short_code = db.Column(db.String(10), primary_key=True)
     long_url = db.Column(db.Text, nullable=False)
 
+# Retry database connection until Postgres is ready
 with app.app_context():
-    db.create_all()
+    retries = 5
+    while retries > 0:
+        try:
+            db.create_all()
+            print("[Database Log] Database tables initialized successfully!")
+            break
+        except OperationalError:
+            retries -= 1
+            print(f"[Database Warning] Waiting for PostgreSQL... ({retries} retries left)")
+            time.sleep(2)
 
 # --- Helper Function: KGS Pool Manager ---
 def generate_random_code(length=7):

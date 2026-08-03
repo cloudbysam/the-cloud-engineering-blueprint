@@ -1,38 +1,23 @@
-# Stage 1: The Builder Stage
-FROM python:3.11-slim AS builder
+FROM python:3.11-slim
+
+# Prevent Python from writing .pyc files and enable unbuffered logging
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+# Install system dependencies required for psycopg2 (PostgreSQL client)
+RUN apt-get update && apt-get install -y \
     gcc \
-    build-essential \
-    python3-dev \
     libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Create a standalone virtual environment for our packages
-RUN python -m venv /opt/venv
-ENV PATH="/opt/venv/bin:$PATH"
-
-RUN apt-get update && apt-get install -y libpq-dev && rm -rf /var/lib/apt/lists/*
+# Install Python dependencies
 COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
-
-
-# Stage 2: The Final Production Runtime Stage
-FROM python:3.11-slim
-
-WORKDIR /app
-
-# Copy the entire, fully compiled virtual environment over
-COPY --from=builder /opt/venv /opt/venv
-COPY app.py .
-
-# Make sure the container runs everything using our virtual environment paths
-ENV PATH="/opt/venv/bin:$PATH"
-ENV FLASK_ENV=production
+# Copy application source code
+COPY . .
 
 EXPOSE 5000
 
