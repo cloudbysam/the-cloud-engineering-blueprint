@@ -29,7 +29,7 @@ Before moving to the cloud, you must master the tools used to build and manage l
 
 ### Phase 2: The Cloud Provider (AWS Focus)
 
-To start using AWS cloud computing services, you must first create an AWS account. This account acts as your primary gateway to a vast ecosystem of cloud infrastructure. Once your account is set up, you are ready to build in the cloud. 
+To start using AWS cloud computing services, you must first create an [AWS account](https://aws.amazon.com/free/). This account acts as your primary gateway to a vast ecosystem of cloud infrastructure. Once your account is set up, you are ready to build in the cloud. 
 
 While AWS offers hundreds of specialized tools, mastering the cloud begins with its four foundational pillars: **Networking, Compute, Storage, and Security**. 
 
