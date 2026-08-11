@@ -25,7 +25,18 @@ Before moving to the cloud, you must master the tools used to build and manage l
 - [ ] **Git & GitHub ([Git Essentials](./posts/git-essentials.md)):** Learn repository management, staging, committing, and how to safely undo mistakes using git reset.
 - [ ] **Python Programming ([Python Essentials](./posts/python-essentials.md)):** Master functions, modular code design, decorators, and basic error handling for automation and cloud scripting.
 
+---
 
+### Phase 2: The Cloud Provider (AWS Focus)
+
+To start using AWS cloud computing services, you must first create an AWS account. This account acts as your primary gateway to a vast ecosystem of cloud infrastructure. Once your account is set up, you are ready to build in the cloud. 
+
+While AWS offers hundreds of specialized tools, mastering the cloud begins with its four foundational pillars: **Networking, Compute, Storage, and Security**. 
+
+- [ ] **Networking ([AWS VPC](./posts/vpc-manual.md)):** Learn how to build a Virtual Private Cloud, configure public/private subnets, internet gateways, and security firewalls.
+- [ ] **Storage ([Amazon S3](./posts/s3-manual.md)):** Learn how to store and retrieve files securely in object storage.
+- [ ] **Compute ([Amazon EC2](./posts/ec2-manual.md)):** Learn how to launch, configure, and connect to a virtual Linux server inside your custom network.
+- [ ] **Security ([AWS IAM](./posts/iam-manual.md)):** Manage users, roles, and safe policies so your cloud resources remain protected.
 
 
 ## Hands-On Capstone Projects
