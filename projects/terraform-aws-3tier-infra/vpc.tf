@@ -108,24 +108,25 @@ resource "aws_route_table" "private-rt" {
 }
 
 
-# create a route table association
+# create route table association for public subnets
 resource "aws_route_table_association" "public" {
-  for_each = toset([
-    aws_subnet.public-1.id,
-    aws_subnet.public-2.id,
-  ])
+  for_each = {
+    "public-1" = aws_subnet.public-1.id
+    "public-2" = aws_subnet.public-2.id
+  }
 
   subnet_id      = each.value
   route_table_id = aws_route_table.public-rt.id
 }
 
+# create route table association for private subnets
 resource "aws_route_table_association" "private_subnet_assoc" {
-  for_each = toset([
-    aws_subnet.private-1.id,
-    aws_subnet.private-2.id,
-    aws_subnet.private-3.id,
-    aws_subnet.private-4.id,
-  ])
+  for_each = {
+    "private-1" = aws_subnet.private-1.id
+    "private-2" = aws_subnet.private-2.id
+    "private-3" = aws_subnet.private-3.id
+    "private-4" = aws_subnet.private-4.id
+  }
 
   subnet_id      = each.value
   route_table_id = aws_route_table.private-rt.id
