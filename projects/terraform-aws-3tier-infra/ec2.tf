@@ -16,7 +16,7 @@ resource "aws_instance" "bastion" {
   subnet_id                   = aws_subnet.public-1.id
   vpc_security_group_ids      = [aws_security_group.bastion_sg.id]
   associate_public_ip_address = true
-#   key_name                    = uncomment and add key name if using key pair
+  #   key_name                    = uncomment and add key name if using key pair
   tags = {
     Name        = "3tier-bastion-host"
     Environment = "production"
@@ -29,6 +29,7 @@ resource "aws_instance" "app_server" {
   instance_type          = "t2.micro"
   subnet_id              = aws_subnet.private-1.id
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
+  #   key_name                    = uncomment and add key name if using key pair
 
   # Install PostgreSQL client tools and Web server on startup
   user_data = <<-EOF
