@@ -41,8 +41,12 @@ While AWS offers hundreds of specialized tools, mastering the cloud begins with 
 
 ## Hands-On Capstone Projects
 
-The best way to prove you are a cloud engineer is to build real things. Here are the milestone projects for this university:
+The best way to prove you are a cloud engineer is to build real things. Here are some milestone projects for practice:
 
 ### 1. High-Availability & Serverless URL Shortener (Enterprise SaaS)
 * **The Goal:** Build and deploy a production-grade, highly available URL shortening service that scales dynamically, caches frequent redirections in memory, and persists mappings across multi-AZ databases.
 * **Cloud Skills:** Docker containerization, AWS ALB & Auto Scaling Groups, Amazon RDS (PostgreSQL), AWS ECS Fargate serverless orchestration and AWS ElastiCache (Redis).
+
+### 2. AWS 3-Tier Production Infrastructure (Terraform)
+* **Goal:** Automated and provisioned a secure, multi-AZ, 3-tier cloud architecture on AWS using Infrastructure as Code (IaC) with modular Terraform.
+* **Cloud & DevOps Tech Stack:** Terraform, AWS VPC, EC2, Amazon RDS (PostgreSQL), ALB, NAT Gateway, Security Groups, Git.
