@@ -102,10 +102,10 @@ To verify end-to-end network connectivity and database functionality, execute a 
     From your local terminal, hop into the Bastion Host, then jump to the private App Server:
     ```bash
     # Connect to Bastion Host
-    ssh -i "N.Virginia-key.pem" ec2-user@<BASTION_PUBLIC_IP>
+    ssh -i <"ec2-key"> ec2-user@<BASTION_PUBLIC_IP>
 
     # SSH into Private App Server
-    ssh -i "N.Virginia-key.pem" ec2-user@10.0.10.111
+    ssh -i <"ec2-key"> ec2-user@<EC2_PRIVATE_IP>
     ```
 2. **Connect to RDS PostgreSQL**
 
