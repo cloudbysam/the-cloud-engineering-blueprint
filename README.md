@@ -39,6 +39,16 @@ While AWS offers hundreds of specialized tools, mastering the cloud begins with 
 - [ ] **Security ([AWS IAM](./posts/iam-manual.md)):** Manage users, roles, and safe policies so your cloud resources remain protected.
 
 
+---
+
+### 🟦 Phase 3: Infrastructure as Code (IaC)
+**Why is this important?** In the real world, clicking buttons in the AWS console is slow, prone to human error, and impossible to scale across hundreds of servers. Infrastructure as Code (IaC) allows you to define your networks, storage, and servers in code files. This makes your infrastructure version-controlled, repeatable, and automated.
+
+- [ ] **Terraform Basics ([Provisioning Tools](./posts/terraform-essentials.md)):** Learn how to write HashiCorp Configuration Language (HCL) to automatically provision AWS Services.
+- [ ] **Ansible Basics ([Configuration Management](./posts/ansible-essentials.md)):** Learn how to automatically configure software, update packages, and manage files inside servers once they are deployed.
+- [ ] **Advanced IaC ([Terraform Modules & Variables](./posts/terraform-advanced.md)):** Learn how to write modular, reusable code for multi-environment cloud deployments (Dev/Staging/Prod).
+
+---
 ## Hands-On Capstone Projects
 
 The best way to prove you are a cloud engineer is to build real things. Here are some milestone projects for practice:
