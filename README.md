@@ -13,7 +13,7 @@ Whether you are transitioning from standard software development or starting fre
 4. Phase 4: Containers & Architecture (The Shipping Containers of Code)
 5. Phase 5: Generative AI in Cloud Engineering (The Future)
 6. Hands-On Capstone Projects
-
+7. Extra Learn (Networking)
 ---
 
 ## The Study Roadmap Checklist
@@ -41,7 +41,7 @@ While AWS offers hundreds of specialized tools, mastering the cloud begins with 
 
 ---
 
-### 🟦 Phase 3: Infrastructure as Code (IaC)
+### Phase 3: Infrastructure as Code (IaC)
 **Why is this important?** In the real world, clicking buttons in the AWS console is slow, prone to human error, and impossible to scale across hundreds of servers. Infrastructure as Code (IaC) allows you to define your networks, storage, and servers in code files. This makes your infrastructure version-controlled, repeatable, and automated.
 
 - [ ] **Terraform Basics ([Provisioning Tools](./posts/terraform-essentials.md)):** Learn how to write HashiCorp Configuration Language (HCL) to automatically provision AWS Services.
@@ -60,3 +60,12 @@ The best way to prove you are a cloud engineer is to build real things. Here are
 ### 2. AWS 3-Tier Production Infrastructure (Terraform)
 * **Goal:** Automated and provisioned a secure, multi-AZ, 3-tier cloud architecture on AWS using Infrastructure as Code (IaC) with modular Terraform.
 * **Cloud & DevOps Tech Stack:** Terraform, AWS VPC, EC2, Amazon RDS (PostgreSQL), ALB, NAT Gateway, Security Groups, Git.
+
+---
+
+### Networking
+Almost every problem you will debug as **cloud engineer** is a networking problem wearing a costume. A pod that will not start is often a DNS problem. A failing deployment is often a certificate problem. A 502 error is a conversation between two machines that went wrong somewhere specific, and knowing where saves you hours.
+
+- [ ] **Communication model ([OSI and TCP/IP](./posts/communication_model.md)):** Learn how data travel across the internet in a reliable manner.
+- [ ] **DNS ([Domain name system](./posts/DNS.md)):** Learn how the internet resolve domain name to the appropriate address.
+- [ ] **IP and CIDR ([IP address and CIDR notation](./posts/IP-CIDR.md)):** Learn how IP addresses are structured, allocated, and subnetted using Classless Inter-Domain Routing notation. 
