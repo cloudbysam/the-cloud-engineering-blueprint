@@ -71,3 +71,5 @@ Almost every problem you will debug as **cloud engineer** is a networking proble
 - [ ] **DNS ([Domain name system](./posts/DNS.md)):** Learn how the internet resolve domain name to the appropriate address.
 - [ ] **IP and CIDR ([IP address and Subnetting](./posts/IP-Subnet.md)):** Learn how IP addresses are structured, allocated, and subnetted using Classless Inter-Domain Routing notation. 
 - [ ] **TCP and UDP ([Transmission Control Protocol and User Datagram Protocol](./posts/transport_layer.md)):** Learn how data is delivered between applications using connection-oriented (TCP) versus connectionless (UDP) transport, ports, and flow control.
+**Networking Practice ([Questions](./practices/networking-questions.md)):** Active-recall questions to test networking concepts.
+- [ ] **Web Server Systemd Service ([Project](./projects/networking/web-server-unitfile)):** Hands-on unit file implementation for a background service.
