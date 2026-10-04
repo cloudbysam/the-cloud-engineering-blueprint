@@ -69,3 +69,4 @@ Almost every problem you will debug as **cloud engineer** is a networking proble
 - [ ] **Communication model ([OSI and TCP/IP](./posts/communication_model.md)):** Learn how data travel across the internet in a reliable manner.
 - [ ] **DNS ([Domain name system](./posts/DNS.md)):** Learn how the internet resolve domain name to the appropriate address.
 - [ ] **IP and CIDR ([IP address and Subnetting](./posts/IP-Subnet.md)):** Learn how IP addresses are structured, allocated, and subnetted using Classless Inter-Domain Routing notation. 
+- [ ] **TCP and UDP ([Transmission Control Protocol and User Datagram Protocol](./posts/transport_layer.md)):** Learn how data is delivered between applications using connection-oriented (TCP) versus connectionless (UDP) transport, ports, and flow control.
