@@ -77,7 +77,7 @@ Hands-on socket programming and networking projects built with pure Python (no e
 - [ ] **2. UDP Client Ping & Round Trip Time (RTT) Calculator**
   - **Overview:** Build a UDP client/server pair that sends 10 ping messages over UDP to calculate packet loss and Round Trip Time (RTT) in milliseconds using precise timestamps. Implement socket timeouts (`settimeout`) to cleanly handle lost packets without freezing execution.
   - *Reference:* [RFC 768 - User Datagram Protocol](https://datatracker.ietf.org/doc/html/rfc768)
-  - *Project Directory:* [`../projects/networking/02-udp-ping-client`](../projects/networking/02-udp-ping-client)
+  - *Project Directory:* [`../projects/networking/02-udp-ping-client`](../projects/networking/02-udp-ping-client/readme.md)
 
 - [ ] **3. HTTP Forward Proxy Server**
   - **Overview:** Develop a local HTTP proxy server that intercepts client browser requests, parses the target Host header, establishes a secondary outbound TCP connection to the origin web server, forwards the request, and pipes the origin server's HTTP response back to the client.
