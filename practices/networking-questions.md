@@ -82,7 +82,7 @@ Hands-on socket programming and networking projects built with pure Python (no e
 - [ ] **3. HTTP Forward Proxy Server**
   - **Overview:** Develop a local HTTP proxy server that intercepts client browser requests, parses the target Host header, establishes a secondary outbound TCP connection to the origin web server, forwards the request, and pipes the origin server's HTTP response back to the client.
   - *Reference:* [RFC 7230 - Section 2.3: Proxies and Gateways](https://datatracker.ietf.org/doc/html/rfc7230#section-2.3)
-  - *Project Directory:* [`../projects/networking/03-http-proxy-server`](../projects/networking/03-http-proxy-server)
+  - *Project Directory:* [`../projects/networking/03-http-proxy-server`](../projects/networking/03-http-proxy-server/readme.md)
 
 - [ ] **4. HTTP Error Code Simulator (502, 503, 504)**
   - **Overview:** Build an interactive HTTP service designed to simulate exact server-side failure modes. Route distinct endpoints (`/502`, `/503`, `/504`) to return raw HTTP status lines and custom HTML diagnostic pages to practice recognizing and debugging upstream server failures.
