@@ -1,0 +1,19 @@
+[Unit]
+Description=Python HTTP Web Server Daemon (Project 1)
+After=network.target
+
+[Service]
+Type=simple
+# User account to run the service
+User=username
+# Working directory where index.html lives
+WorkingDirectory=/path/01-http-web-server
+# Executable start command
+ExecStart=/usr/bin/python3 /path/01-http-web-server/server.py
+
+# Restart behavior for network error handling
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

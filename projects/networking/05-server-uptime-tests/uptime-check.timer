@@ -1,0 +1,12 @@
+[Unit]
+Description=Schedule Uptime Health Check Every 30 Seconds
+
+[Timer]
+# Run 10 seconds after boot
+OnBootSec=10s
+# Run every 30 seconds repeatedly
+OnUnitActiveSec=30s
+Unit=uptime-check.service
+
+[Install]
+WantedBy=timers.target

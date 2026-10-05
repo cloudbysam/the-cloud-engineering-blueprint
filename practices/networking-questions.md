@@ -87,9 +87,8 @@ Hands-on socket programming and networking projects built with pure Python (no e
 - [ ] **4. HTTP Error Code Simulator (502, 503, 504)**
   - **Overview:** Build an interactive HTTP service designed to simulate exact server-side failure modes. Route distinct endpoints (`/502`, `/503`, `/504`) to return raw HTTP status lines and custom HTML diagnostic pages to practice recognizing and debugging upstream server failures.
   - *Reference:* [MDN - HTTP Response Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
-  - *Project Directory:* [`../projects/networking/04-http-error-simulator`](../projects/networking/04-http-error-simulator)
 
-- [ ] **5. Scheduled Server Uptime Test Suite**
-  - **Overview:** Write a Python test suite using standard assertions or the `unittest` framework to test a server with scheduled availability windows (e.g., UP for $X$ seconds, DOWN for $Y$ seconds) to verify network connection error handling and socket timeout behaviors.
-  - *Reference:* [Python Docs - `socket.connect_ex` and error codes](https://docs.python.org/3/library/socket.html#socket.socket.connect_ex)
-  - *Project Directory:* [`../projects/networking/05-server-uptime-tests`](../projects/networking/05-server-uptime-tests)
+- [ ] **5. Systemd Web Server Service & Scheduled Uptime Timer**
+  - **Overview:** Configure Linux `systemd` unit files (`.service` and `.timer`) to manage a Python HTTP web server as a background system daemon with automatic restart policies (`Restart=on-failure`), and deploy a scheduled bash health-check script triggered every 30 seconds to verify HTTP availability and recover from server failures.
+  - *Reference:* [systemd.service — Linux manual page](https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html)
+  - *Project Directory:* [Project Files](../projects/networking/05-server-uptime-tests/readme.md)

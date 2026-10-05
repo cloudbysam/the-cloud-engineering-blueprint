@@ -1,0 +1,6 @@
+[Unit]
+Description=Run Uptime Health Check on HTTP Server
+
+[Service]
+Type=oneshot
+ExecStart=/path/05-server-uptime-tests/health-check.sh

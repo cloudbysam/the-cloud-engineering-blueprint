@@ -32,7 +32,7 @@ Custom, user-defined systemd service files are typically stored in:
 
 Service file names must end with the `.service` extension (e.g., `myscript.service`). 
 
-> Example: Check out this sample web server unit file at [`projects/web-servers/unitfile`](../projects/networking/web-server-unitfile).
+> Example: Check out this sample web server unit file at [`projects/web-servers/unitfile`](../projects/networking/05-server-uptime-tests/readme.md).
 
 ## Journalctl
 When a systemd-managed service writes to standard output (`stdout`) or standard error (`stderr`) using commands like `echo` or `print()`, systemd automatically captures these log streams. To view and query these logs, use the **`journalctl`** utility.
