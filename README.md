@@ -50,6 +50,14 @@ While AWS offers hundreds of specialized tools, mastering the cloud begins with 
 - [ ] **Advanced IaC ([Terraform Modules & Variables](./posts/terraform-advanced.md)):** Learn how to write modular, reusable code for multi-environment cloud deployments (Dev/Staging/Prod).
 
 ---
+
+### Phase 4: Containers & Architecture
+**Why is this important?** "It works on my machine" is a massive problem in software. Containerization packages your application code, dependencies, and settings together so it runs exactly the same way on your computer, an AWS server, or anywhere else.
+
+- [ ] **Docker:** Learn how to write a `Dockerfile` to containerize a Python application.
+- [ ] **Amazon ECS & EKS:** Learn how AWS runs and manages clusters of containers at scale.
+
+---
 ## Hands-On Capstone Projects
 
 The best way to prove you are a cloud engineer is to build real things. Here are some milestone projects for practice:
