@@ -3,9 +3,13 @@ name: Hello World Workflows
 on:
   push:
     branches: [main]
+    paths:
+      - 'projects/ci-cd-actions/**'  #  Only runs when this folder changes  
   pull_request:
     branches:
       - main
+    paths:
+      - 'projects/ci-cd-actions/**'  #  Only runs when PR affects this folder  
 
 jobs:
   hello:
