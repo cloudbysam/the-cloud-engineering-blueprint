@@ -25,17 +25,7 @@ jobs:
         with:
           python-version: '3.11'   
           
-      - name: Debug - List Repository Files
-        run: |
-          echo "=== CURRENT DIRECTORY ==="
-          pwd
-          echo "=== ROOT FILES ==="
-          ls -la
-          echo "=== PROJECTS SUBFOLDER ==="
-          ls -la projects/
-    
-          
-          # 🎯 We use 'working-directory' so GitHub knows to look inside your subfolder
+        # 🎯 We use 'working-directory' so GitHub knows to look inside your subfolder
       - name: Execute Python Script
         working-directory: ./projects/ci-cd-actions
         run: python app.py
