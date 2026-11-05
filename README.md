@@ -56,7 +56,7 @@ While AWS offers hundreds of specialized tools, mastering the cloud begins with 
 **Why is this important?** Shipping code directly to servers often leads to the dreaded *"It works on my machine, but breaks in production"* bug. Containers bundle your application code, runtime, system tools, and libraries into a single immutable package that runs identically everywhere.
 
 - [ ] **Docker Essentials ([Containerization Guide](./posts/docker-essentials.md)):** Learn how to write optimized Dockerfiles, build and run container images, and orchestrate multi-container services with Docker Compose.
-- [ ] **Kubernetes Basics:** Master pods, deployments, and services for container orchestration at scale.
+- [ ] **Kubernetes Basics ([Container Orchestration](./posts/k8s-basics.md)):** Understand Pods, Deployments, Services, and `kubectl` management.
 - [ ] **Amazon ECS & EKS:** Learn how AWS runs and manages clusters of containers at scale.
 
 ---
