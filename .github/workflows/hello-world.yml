@@ -1,28 +1,49 @@
-name: Hello World Workflows
+name: CI/CD Learning Playground
 
 on:
+  # TRIGGER 1: Code Pushes
   push:
     branches: [main]
     paths:
-      - 'projects/ci-cd-actions/**'  #  Only runs when this folder changes  
-  pull_request:
-    branches:
-      - main
-    paths:
-      - 'projects/ci-cd-actions/**'  #  Only runs when PR affects this folder  
+      - 'projects/ci-cd-actions/**'
+
+  # TRIGGER 2: GitHub Issues
+  issues:
+    types: [opened]
 
 jobs:
-  hello:
+  # This job ONLY runs during a code push
+  python-test-job:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: hello World
-        run: echo "hello World"
-        shell: bash
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-  goodbye:
+      - name: Set up Python Environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'     
+     
+          # 🎯 We use 'working-directory' so GitHub knows to look inside your subfolder
+      - name: Execute Python Script
+        working-directory: projects/ci-cd-actions
+        run: python app.py
+
+  # This job ONLY runs when a GitHub Issue is opened
+  issue-automation-job:
+    if: github.event_name == 'issues'
     runs-on: ubuntu-latest
+    permissions:
+      issues: write # Gives the runner permission to type a comment back to you
     steps:
-      - name: goodbye
-        run: echo "goodbye World"
-        shell: bash      
+      - name: Dump Issue Context Data
+        run: echo '${{ toJson(github.event.issue) }}' | jq
+
+      - name: Auto-Comment on the Issue
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Hello @${{ github.event.issue.user.login }}! 
+            Thanks for opening this issue. Our automated GitHub Action bot processed this instantly!
