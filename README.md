@@ -51,10 +51,12 @@ While AWS offers hundreds of specialized tools, mastering the cloud begins with 
 
 ---
 
-### Phase 4: Containers & Architecture
-**Why is this important?** "It works on my machine" is a massive problem in software. Containerization packages your application code, dependencies, and settings together so it runs exactly the same way on your computer, an AWS server, or anywhere else.
+### Phase 4: Containers & Orchestration
 
-- [ ] **Docker:** Learn how to write a `Dockerfile` to containerize a Python application.
+**Why is this important?** Shipping code directly to servers often leads to the dreaded *"It works on my machine, but breaks in production"* bug. Containers bundle your application code, runtime, system tools, and libraries into a single immutable package that runs identically everywhere.
+
+- [ ] **Docker Essentials ([Containerization Guide](./posts/docker-essentials.md)):** Learn how to write optimized Dockerfiles, build and run container images, and orchestrate multi-container services with Docker Compose.
+- [ ] **Kubernetes Basics:** Master pods, deployments, and services for container orchestration at scale.
 - [ ] **Amazon ECS & EKS:** Learn how AWS runs and manages clusters of containers at scale.
 
 ---
