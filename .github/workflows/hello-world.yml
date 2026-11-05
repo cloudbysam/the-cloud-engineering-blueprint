@@ -27,7 +27,7 @@ jobs:
      
           # 🎯 We use 'working-directory' so GitHub knows to look inside your subfolder
       - name: Execute Python Script
-        working-directory: projects/ci-cd-actions
+        working-directory: cloud-engineering-blueprint/projects/ci-cd-actions
         run: python app.py
 
   # This job ONLY runs when a GitHub Issue is opened
