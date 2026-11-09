@@ -11,6 +11,8 @@ on:
   issues:
     types: [opened]
 
+  workflow_dispatch:
+
 jobs:
   # This job ONLY runs during a code push
   python-test-job:
@@ -25,7 +27,7 @@ jobs:
         with:
           python-version: '3.11'   
           
-        # 🎯 We use 'working-directory' so GitHub knows to look inside your subfolder
+        # We use 'working-directory' so GitHub knows to look inside your subfolder
       - name: Execute Python Script
         working-directory: ./projects/ci-cd-actions
         run: python app.py
