@@ -32,6 +32,75 @@ jobs:
         working-directory: ./projects/ci-cd-actions
         run: python app.py
 
+    # --- Automated Staging Deployment ---
+  terraform-staging:
+    runs-on: ubuntu-latest
+    needs: python-test-job  # Waits for your tests to pass first
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1  
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init & Apply (Staging)
+        working-directory: ./projects/ci-cd-actions/terraform
+        run: |
+          echo "Initializing Terraform for Staging..."
+          
+          # We pass a specific backend config file for staging
+          terraform init -backend-config="key=staging/terraform.tfstate"
+
+          echo "Generating Staging Plan..."
+          terraform plan -var="env=staging" # <--- Safely logs out what it will create
+          
+          terraform apply -auto-approve -var="env=staging"
+          echo "Staging infrastructure deployed successfully!"
+
+  # --- Protected Production Deployment ---
+  terraform-production:
+    runs-on: ubuntu-latest
+    needs: terraform-staging  # Forces staging to finish successfully first
+    
+    # This key tells GitHub to pause and check the environment protection rules
+    environment: production   
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init & Apply (Production)
+        working-directory: ./projects/ci-cd-actions/terraform
+        run: |
+          echo "Initializing Terraform for Production..."
+          
+          # We pass a specific backend config file for production
+          terraform init -backend-config="key=production/terraform.tfstate"
+
+          echo "Generating Production Plan..."
+          terraform plan -var="env=production" # <--- You can inspect this output while the pipeline is paused!
+          
+          terraform apply -auto-approve -var="env=production"
+          echo "Production infrastructure deployed safely!"     
+
         # This Job is used for building the docker image.
   build-docker-job:
     runs-on: ubuntu-latest
