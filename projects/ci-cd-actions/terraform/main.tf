@@ -17,7 +17,7 @@ resource "aws_instance" "my_server" {
   instance_type = var.env == "production" ? "t3.micro" : "t2.micro"
 
   tags = {
-    Name        = "EC2-${var.env}-Server"
+    Name        = "EC2-${var.env}-Server-Auto"
     Environment = var.env
   }
 }
