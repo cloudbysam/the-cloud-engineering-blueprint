@@ -1,0 +1,75 @@
+name: Destroy Terraform Infrastructure
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_environment:
+        description: "Which environment do you want to destroy?"
+        required: true
+        type: choice
+        options:
+          - staging
+          - production
+          - all
+      confirm_destroy:
+        description: "Type DESTROY to confirm"
+        required: true
+        type: string
+
+jobs:
+  destroy-staging:
+    if: >-
+      github.event.inputs.confirm_destroy == 'DESTROY' &&
+      (github.event.inputs.target_environment == 'staging' || github.event.inputs.target_environment == 'all')
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials (Staging)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::112551747981:role/GitHubActionsTerraformRole
+          role-session-name: GitHubActionsDestroyStaging
+          aws-region: us-east-1
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Destroy (Staging)
+        working-directory: ./projects/ci-cd-actions/terraform
+        run: |
+          terraform init -backend-config="key=staging/terraform.tfstate"
+          terraform destroy -auto-approve -var="env=staging"
+
+  destroy-production:
+    if: >-
+      github.event.inputs.confirm_destroy == 'DESTROY' &&
+      (github.event.inputs.target_environment == 'production' || github.event.inputs.target_environment == 'all')
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials (Production)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::112551747981:role/GitHubActionsProductionRole
+          role-session-name: GitHubActionsDestroyProduction
+          aws-region: us-east-1
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Destroy (Production)
+        working-directory: ./projects/ci-cd-actions/terraform
+        run: |
+          terraform init -backend-config="key=production/terraform.tfstate"
+          terraform destroy -auto-approve -var="env=production"
