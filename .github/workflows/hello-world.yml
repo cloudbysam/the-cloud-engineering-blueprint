@@ -150,7 +150,10 @@ jobs:
       issues: write # Gives the runner permission to type a comment back to you
     steps:
       - name: Dump Issue Context Data
-        run: echo '${{ toJson(github.event.issue) }}' | jq
+        env:
+          ISSUE_JSON: ${{ toJson(github.event.issue) }}
+        run: echo "$ISSUE_JSON" | jq
+
 
       - name: Auto-Comment on the Issue
         uses: peter-evans/create-or-update-comment@v4
