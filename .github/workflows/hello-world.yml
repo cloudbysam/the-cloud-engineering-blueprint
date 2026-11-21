@@ -52,7 +52,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           # TELL IT TO ASSUME A ROLE, NOT USE STATIC KEYS
-          role-to-assume: arn:aws:iam::112551747981:role/GitHubActionsTerraformRole
+          role-to-assume:  ${{ vars.AWS_STAGING_ROLE_ARN }}
           role-session-name: GitHubActionsStagingSession
           aws-region: us-east-1
 
@@ -94,7 +94,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           # 2. TELL IT TO ASSUME A ROLE, NOT USE STATIC KEYS
-          role-to-assume: arn:aws:iam::112551747981:role/GitHubActionsProductionRole
+          role-to-assume:  ${{ vars.AWS_PRODUCTION_ROLE_ARN }}
           role-session-name: GitHubActionsProductionSession
           aws-region: us-east-1
 
